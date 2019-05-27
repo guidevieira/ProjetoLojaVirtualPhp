@@ -1,5 +1,5 @@
 <?php 
-$usuario = ["logado" => true,"nome"=>"guilherme","nivelAcesso"=> 0];
+$usuario = ["logado" => false,"nome"=>"guilherme","nivelAcesso"=> 0];
 
 
 
@@ -42,7 +42,7 @@ $usuario = ["logado" => true,"nome"=>"guilherme","nivelAcesso"=> 0];
                             </li>
                     <?php else:?>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">login</a>
+                                <a class="nav-link" href="login.php">login</a>
                             </li>
                     <?php endif;?>
         </div>
