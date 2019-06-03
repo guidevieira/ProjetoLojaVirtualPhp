@@ -1,18 +1,38 @@
 <?php
 
-if($_POST){
-    if($_POST["nomeCliente"] == ""){
-        header("location:index.php");
-    }
+include_once "funcoes.php"; 
+function validarCompra($dadosCompras){
 
-    $nomeCliente = $_POST['nomeCliente'];
-    $nomeProduto = $_POST['nomeProduto'];
+    $erros = [];
 
-}else{
-    header("location:index.php");
-
+if(!$dadosCompras){
+        $erros[] = "Nao foi recebido nehum dado para realizae a compra!";   
 }
 
+if(!validarNome($dadosCompras["nomeCliente"])){
+    $erros[] = "verifique o nome !";
+}
+
+if(!validarCpf($dadosCompras["cpfCliente"])){
+    $erros[] = "cpf invalido";    
+}
+
+if(!validarCartao($dadosCompras["cartaoCliente"])){
+    $erros[] = "cartao invalido";
+}
+
+if(!validarValidade($dadosCompras['dataValidadeCartao'])){
+    $erros = "data de valida venciada";
+}
+
+if(!validarCVV($dadosCompras["cvvCartao"])){
+    $erros = "cvv invalido";
+}
+
+return $erros;
+}
+
+$errosValidacao = array(validarCompra($_POST));
 ?>
 
 
@@ -26,11 +46,23 @@ if($_POST){
 
     <main class="container">
         <section class="row">
-            <div class="col-md-12">
-                <div class="alert alert-success" role="alert">
-                ola <?php echo $nomeCliente?> parabens pela sua compra do produto <?php echo $nomeProduto?>
-                </div>
-            </div>
+                    <?php
+                    if(count($errosValidacao) > 0):?>
+                        <div class="col-md-12">
+                                <ul>
+                                    <?php foreach($errosValidacao as $erro): ?>
+                                        <li><?php echo $erro; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                        </div>
+                            <?php else: ?>
+
+                        <div class="col-md-12">
+                            <div class="alert alert-success" role="alert">
+                                ola <?php echo $_POST["nomeProduto"];?> parabens pela sua compra do produto <?php echo $_POST["nomeProduto"];?>
+                            </div>
+                        </div>
+                    <?php endif;?>
             <div class="col-md-12">
                 <a href="index.php" class="btn btn-primary" > Volta para home</a>
             </div>

@@ -1,5 +1,5 @@
 <?php 
-include "funcoes.php";
+include_once "funcoes.php";
 
 $usuario = logarUsuario("guilherme vieira", 1);
 
@@ -28,6 +28,8 @@ $produtos = addProduto("curso de ux","curso incrivel",2000, "img/img3.jpg",$prod
 $produtos = addProduto("curso de extra","curso incrivel",100, "img/img2.jpg",$produtos);
 
 
+
+
 $categorias = [
     "curso",
     "tutorias",
@@ -36,13 +38,7 @@ $categorias = [
     "codigos"
 ];
 
-
-
-
-
 ?>
-
-
 
 <head>
     <title>Loja Virtual</title>

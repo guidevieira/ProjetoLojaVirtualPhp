@@ -7,6 +7,7 @@
 
 
 
+
     <main class="container mt-5">
         <section class="row">
         <!--Coluna para segura -->
@@ -43,31 +44,32 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form method="POST" action="sucesso.php">
-                    <div class="form-group">
-                        <input type="texto" name="nomeProduto" value="<?php echo $produto["nome"]?>" hidden>
-                        <input type="text" name="nomeCliente" placeholder="nome completo">
+                    <div class="modal-body">
+                        <form method="POST" action="sucesso.php">
+                            <div class="form-group">
+                                <?php $nomeProduto = $produto["nome"]?>
+                                <input type="texto" name="nomeProduto" placeholder="<?php  echo $produto["nome"]; ?>">
+                                <input type="text" name="nomeCliente" placeholder="nome completo">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="cpfCliente" placeholder="CPF">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="cartaoCliente" placeholder="Cartao De Credito">
+                            </div>
+                            <div class="form-group">
+                                <input type="date" name="dataValidadeCartao" placeholder="Valida Do Credito">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" maxlength="3" name="cvvCartao" placeholder="CVV Do Credito">
+                            </div>
+                            <div class="modal-footer">
+                                <h4 class="text-sucess">preço total: R$<?php  echo $produto["preco"]; ?></h4>
+                                <button type="submit" class="btn btn-primary" >Finaliza Compra2</button>
+                            </div>
                     </div>
-                    <div class="form-group">
-                        <input type="number" name="cpfCliente" placeholder="CPF">
+                    </form>
                     </div>
-                    <div class="form-group">
-                        <input type="number" name="cartaoCliente" placeholder="Cartao De Credito">
-                    </div>
-                    <div class="form-group">
-                        <input type="date" name="DataValidadeCartao" placeholder="Valida Do Credito">
-                    </div>
-                    <div class="form-group">
-                        <input type="number" maxlength="3" name="cvvCartao" placeholder="CVV Do Credito">
-                    </div>
-                    <div class="modal-footer">
-                        <h4 class="text-sucess">preço total: R$<?php  echo $produto["preco"]; ?></h4>
-                        <button type="submit" class="btn btn-primary" >Finaliza Compra2</button>
-                    </div>
-            </div>
-            </form>
-            </div>
 <?php endforeach?>
         </div>
         </div>
